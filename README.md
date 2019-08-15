@@ -52,6 +52,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 - **Serge Agroskin** - _Initial work_
 
+Based on https://github.com/tmc/grpcutil/tree/master/protoc-gen-tstypes
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

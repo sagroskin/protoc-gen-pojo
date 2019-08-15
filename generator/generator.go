@@ -195,7 +195,7 @@ func fieldType(f *desc.FieldDescriptor, params *Parameters) string {
 	}
 
 	if f.IsRepeated() {
-		return fmt.Sprintf("ArrayList<%s>", t)
+		return fmt.Sprintf("%s[]", t)
 	}
 
 	return t

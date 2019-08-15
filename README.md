@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to run the project:
 
 - Go
-  
+
 ### Installing
 
 ```bash
@@ -52,7 +52,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 - **Serge Agroskin** - _Initial work_
 
-Based on https://github.com/tmc/grpcutil/tree/master/protoc-gen-tstypes
+Based on [protoc-gen-tstypes](<[LICENSE](https://github.com/tmc/grpcutil/tree/master/protoc-gen-tstypes)>)
 
 ## License
 

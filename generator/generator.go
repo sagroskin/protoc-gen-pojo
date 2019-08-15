@@ -181,7 +181,7 @@ func (g *Generator) generateMessage(m *desc.MessageDescriptor, params *Parameter
 	for _, f := range m.GetFields() {
 		name := f.GetName()
 
-		g.W(fmt.Sprintf(indent+"%s %s;", fieldType(f, params), name))
+		g.W(fmt.Sprintf(indent+"public %s %s;", fieldType(f, params), name))
 	}
 
 	g.W("}\n")
@@ -253,9 +253,11 @@ func rawFieldType(f *desc.FieldDescriptor, params *Parameters) string {
 func packageQualifiedName(e desc.Descriptor) string {
 	name := e.GetName()
 	var c desc.Descriptor
+
 	for c = e.GetParent(); c.GetParent() != nil; c = c.GetParent() {
 		name = fmt.Sprintf("%v_%v", c.GetName(), name)
 	}
+
 	return name
 }
 
@@ -292,17 +294,21 @@ func (g *Generator) generateServiceMethod(method *desc.MethodDescriptor, params 
 	o := method.GetOutputType().GetName()
 
 	ss, cs := method.IsServerStreaming(), method.IsClientStreaming()
+
 	if !(ss || cs) {
 		g.W(fmt.Sprintf("%s: (r:%s) => %s;", method.GetName(), i, o))
 		return
 	}
+
 	if !cs {
 		g.W(fmt.Sprintf("%s: (r:%s, cb:(a:{value: %s, done: boolean}) => void) => void;", method.GetName(), i, o))
 		return
 	}
+
 	if !ss {
 		g.W(fmt.Sprintf("%s: (r:() => {value: %s, done: boolean}) => %s;", method.GetName(), i, o))
 		return
 	}
+
 	g.W(fmt.Sprintf("%s: (r:() => {value: %s, done: boolean}, cb:(a:{value: %s, done: boolean}) => void) => void;", method.GetName(), i, o))
 }

@@ -1,6 +1,6 @@
 # protoc-gen-pojo
 
-A protoc plugin for generating Java POJO classes from Protobuffer files.
+A protoc plugin for generating Java POJO classes from Protobuf files.
 
 ## Getting Started
 
@@ -20,6 +20,15 @@ Generate Java classes with string enums:
 
 ```bash
 protoc --pojo_out=string_enums=true:. <your_file>.proto
+```
+
+## Run without installing module:
+
+```bash
+git clone https://github.com/sagroskin/protoc-gen-pojo.git
+cd protoc-gen-pojo
+go build
+protoc --plugin=./protoc-gen-pojo.exe --proto_path=./ignore/proto --pojo_out=./ignore/java example.proto
 ```
 
 ## Developer Environment Getting Started

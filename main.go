@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -27,7 +27,7 @@ func main() {
 		log.Fatalln("stdin appears to be a tty device. This tool is meant to be invoked via the protoc command via a --pojo_out directive.")
 	}
 
-	data, err := ioutil.ReadAll(os.Stdin)
+	data, err := io.ReadAll(os.Stdin)
 
 	if err != nil {
 		log.Fatalln(errors.Wrap(err, "Failed to read input."))

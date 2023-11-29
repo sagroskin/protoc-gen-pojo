@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message Door {
+  string code = 1;
+  Action action = 2;
+}
+
+enum Action {
+  OPEN = 0;
+  CLOSE = 1;
+}
